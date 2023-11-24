@@ -14,8 +14,8 @@ public class LocalUser {
     private Long id;
     @Column(name = "full_name",nullable = false )
     private String fullName;
-    @Column(name = "unername",nullable = false ,unique = true)
-    private String unerName;
+    @Column(name = "username",nullable = false ,unique = true)
+    private String userName;
     @Column(name = "email",nullable = false ,length = 320)
     private String email;
     @Column(name = "password",nullable = false ,length = 1000)
@@ -44,12 +44,12 @@ public class LocalUser {
         this.fullName = fullName;
     }
 
-    public String getUnerName() {
-        return unerName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUnerName(String unerName) {
-        this.unerName = unerName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getEmail() {
