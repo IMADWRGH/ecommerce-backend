@@ -1,4 +1,4 @@
-package com.IMADWRGH.ecommercebackend.Controller;
+package com.IMADWRGH.ecommercebackend.Controller.Model;
 
 import jakarta.validation.constraints.*;
 
@@ -21,7 +21,7 @@ public class RegistrationBody {
 //            (?=.*[a-z])             //should contain at least one lower case
 //            (?=.*[A-Z])             //should contain at least one upper case
 //            [a-zA-Z0-9]{8,}         //should contain at least 8 from the mentioned characters
-    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$")
+    //@Pattern(regexp = "^(?=.*\\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$")
     private String password;
 
     public String getUsername() {
