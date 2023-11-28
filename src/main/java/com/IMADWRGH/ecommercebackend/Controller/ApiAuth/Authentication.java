@@ -1,5 +1,8 @@
-package com.IMADWRGH.ecommercebackend.Controller;
+package com.IMADWRGH.ecommercebackend.Controller.ApiAuth;
 
+import com.IMADWRGH.ecommercebackend.Controller.Model.LoginBody;
+import com.IMADWRGH.ecommercebackend.Controller.Model.LoginResponse;
+import com.IMADWRGH.ecommercebackend.Controller.Model.RegistrationBody;
 import com.IMADWRGH.ecommercebackend.Exception.UserException;
 import com.IMADWRGH.ecommercebackend.Service.UserService;
 import jakarta.validation.Valid;
@@ -24,6 +27,18 @@ public class Authentication {
             return ResponseEntity.ok().build();
         } catch (UserException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+    }
+
+    @PostMapping(path = "/login")
+    public ResponseEntity<LoginResponse> LoginUser(@Valid @RequestBody LoginBody loginBody) {
+        String jwt = userService.Login(loginBody);
+        if (jwt == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        } else {
+            LoginResponse response = new LoginResponse();
+            response.setJwt(jwt);
+            return ResponseEntity.ok(response);
         }
     }
 }
