@@ -21,7 +21,7 @@ public class Authentication {
     }
 
     @PostMapping(path = "/register")
-    public ResponseEntity RegisterUser(@Valid @RequestBody RegistrationBody registrationBody)  {
+    public ResponseEntity<Void> RegisterUser(@Valid @RequestBody RegistrationBody registrationBody)  {
         try {
             userService.Register(registrationBody);
             return ResponseEntity.ok().build();
