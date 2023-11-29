@@ -1,5 +1,6 @@
 package com.IMADWRGH.ecommercebackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class LocalUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id",nullable = false)
+    @JsonIgnore
     private Long id;
     @Column(name = "full_name",nullable = false )
     private String fullName;
@@ -18,10 +20,12 @@ public class LocalUser {
     private String userName;
     @Column(name = "email",nullable = false ,length = 320)
     private String email;
+    @JsonIgnore
     @Column(name = "password",nullable = false ,length = 1000)
     private String password;
 
     /////////////relationship with Address////
+    @JsonIgnore
     @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE,orphanRemoval = true)
     private List<Address> addresses=new ArrayList<>();
 
