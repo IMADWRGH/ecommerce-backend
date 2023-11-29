@@ -5,10 +5,12 @@ import com.IMADWRGH.ecommercebackend.Controller.Model.LoginResponse;
 import com.IMADWRGH.ecommercebackend.Controller.Model.RegistrationBody;
 import com.IMADWRGH.ecommercebackend.Exception.UserException;
 import com.IMADWRGH.ecommercebackend.Service.UserService;
+import com.IMADWRGH.ecommercebackend.model.LocalUser;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -40,5 +42,11 @@ public class Authentication {
             response.setJwt(jwt);
             return ResponseEntity.ok(response);
         }
+    }
+
+
+    @GetMapping(path = "/profile")
+    public LocalUser getLoggedInUserProfile(@AuthenticationPrincipal LocalUser user){
+        return user;
     }
 }
