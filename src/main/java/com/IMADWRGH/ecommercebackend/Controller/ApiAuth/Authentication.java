@@ -49,4 +49,9 @@ public class Authentication {
     public LocalUser getLoggedInUserProfile(@AuthenticationPrincipal LocalUser user){
         return user;
     }
+
+    @GetMapping(path = "/me")
+    public LocalUser getLoggedInUser(@AuthenticationPrincipal LocalUser user){
+        return user;
+    }
 }
