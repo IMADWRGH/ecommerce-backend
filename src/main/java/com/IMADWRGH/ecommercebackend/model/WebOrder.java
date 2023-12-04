@@ -1,5 +1,6 @@
 package com.IMADWRGH.ecommercebackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class WebOrder {
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "order" ,cascade = CascadeType.REMOVE,orphanRemoval = true)
     private List<WebOrderQuantities> quantities =new ArrayList<>();
 
