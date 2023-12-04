@@ -50,8 +50,4 @@ public class Authentication {
         return user;
     }
 
-    @GetMapping(path = "/me")
-    public LocalUser getLoggedInUser(@AuthenticationPrincipal LocalUser user){
-        return user;
-    }
 }
